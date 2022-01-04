@@ -1,15 +1,44 @@
-const UIController = (function(){
-    let text = 'Hello World!'
+// Storage Controller
+// create later
 
-    const changeText = function(){
-        const element = document.querySelector('h1')
-        element.textContent = text
+//Item Controller
+const ItemCtrl = (function(){
+    // Item Constructure
+    const Item = function(id, name, calories){
+        this.id = id
+        this.name = name
+        this.calories = calories
+    }
+
+    // Data Structure
+    const data = {
+        items: [
+            {id: 0, name:'Steak Dinner', calories: 1200},
+            {id: 1, name:'Cookie', calories: 400},
+            {id: 2, name: 'Eggs', calories: 300}
+        ],
+        total: 0
     }
     return {
-        callChangeText: function (){
-            changeText()
-            console.log(text)
+        logData: function (){
+            return data
         }
     }
 })();
-UIController.callChangeText()
+
+//UI Controller
+const UICtrl = (function(){
+    console.log('UICtrl')
+})();
+
+// App Controller
+const App = (function(ItemCtrl, UICtrl){
+    return {
+        init: function (){
+            console.log('Initalizing App')
+        }
+    }
+})(ItemCtrl, UICtrl)
+
+// Initialize App
+App.init()
